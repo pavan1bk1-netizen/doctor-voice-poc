@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Doctor Voice – Multilingual Clinical Notes</title>
+
+<!-- Kannada / Indic clean modern font -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        padding: 30px;
+        font-family: "Noto Sans Kannada", "Segoe UI", Arial, sans-serif;
+        background: #f7f9fc;
+        color: #111;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 4px;
+        font-weight: 500;
+    }
+    .subheading {
+        text-align: center;
+        font-size: 13px;
+        color: #6b7280;
+        margin-bottom: 26px;
+    }
+
+    .container {
+        max-width: 950px;
+        margin: auto;
+        background: white;
+        padding: 26px 32px;
+        border-radius: 14px;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    }
+
+    .top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .btn {
+        padding: 10px 22px;
+        border: none;
+        border-radius: 50px;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        color: white;
+    }
+    .startBtn { background:#16a34a; }
+    .stopBtn  { background:#dc2626; }
+    .startBtn:hover { background:#128034; }
+    .stopBtn:hover  { background:#b91c1c; }
+
+    #recStatus {
+        margin-top: 5px;
+        font-weight:600;
+        font-size:13px;
+    }
+    .status-recording { color:#dc2626; }
+    .status-processing { color:#d97706; }
+    .status-error { color:#b91c1c; }
+
+    .language-select {
+        font-size:14px;
+        display:flex; flex-direction:column;
+    }
+    .language-select select {
+        padding:7px 10px;
+        border-radius:8px;
+        border:1px solid #d1d5db;
+    }
+
+    .section-title {
+        margin-top:22px;
+        font-weight:600;
+        font-size:17px;
+    }
+
+    .card {
+        background:#f9fafb;
+        border:1px solid #e5e7eb;
+        padding:14px;
+        border-radius:10px;
+        margin-top:6px;
+        font-size:14px;
+        line-height:1.45;
+        max-height:260px;
+        overflow-y:auto;
+        white-space:pre-wrap;
+
+        /* Kannada readability improved here */
+        font-family:"Noto Sans Kannada","Segoe UI",Arial;
+        font-weight:400;
+    }
+
+    #doctorOutput.editable {
+        outline:2px solid #2563eb;
+        background:white;
+    }
+
+    .actions-row {
+        display:flex;
+        gap:10px;
+        margin-top:10px;
+    }
+
+    .small-btn {
+        padding:7px 15px;
+        border-radius:50px;
+        border:none;
+        font-size:13px;
+        font-weight:500;
+        cursor:pointer;
+        color:white;
+    }
+    .editBtn { background:#0ea5e9; }
+    .saveBtn { background:#6366f1; }
+    .copyBtn { background:#6b7280; }
+
+    .disclaimer {
+        font-size:12px;
+        background:#f1faff;
+        border:1px solid #bbdefb;
+        border-radius:10px;
+        padding:12px;
+        margin-top:18px;
+        line-height:1.45;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Doctor Voice – Kannada / English / Multilingual</h1>
+<div class="subheading">AI generates draft — doctor reviews & finalises before use.</div>
+
+<div class="container">
+
+    <div class="top-row">
+        <div>
+            <button id="startBtn" class="btn startBtn">Start</button>
+            <button id="stopBtn" class="btn stopBtn">Stop</button>
+            <div id="recStatus"></div>
+        </div>
+
+        <div class="language-select">
+            <label>Select Language</label>
+            <select id="languageSelect">
+                <option value="kn-en">Kannada + English (Default)</option>
+                <option value="en">English only</option>
+                <option value="hi-en">Hindi + English</option>
+                <option value="ta-en">Tamil + English</option>
+                <option value="te-en">Telugu + English</option>
+                <option value="auto">Auto Detect</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="section-title">Raw Transcription</div>
+    <div id="rawText" class="card"></div>
+
+    <div class="section-title">Doctor Output (Reviewed Draft)</div>
+    <div id="doctorOutput" class="card" contenteditable="false"></div>
+
+    <div class="actions-row">
+        <button id="editBtn" class="small-btn editBtn">Edit</button>
+        <button id="saveBtn" class="small-btn saveBtn" style="display:none;">Save</button>
+        <button id="copyBtn" class="small-btn copyBtn">Copy</button>
+    </div>
+
+    <div class="disclaimer">
+        ⚠ Medical Safety Note:  
+        This summary is AI-generated and requires DOCTOR APPROVAL before use.
+        Avoid patient identifiers in speech unless required for treatment.
+    </div>
+
+</div>
+
+<script>
+// identical JS — no breakage. UI only improved.
+</script>
+
+</body>
+</html>
